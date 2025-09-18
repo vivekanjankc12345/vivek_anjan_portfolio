@@ -1,57 +1,133 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
+
+  // Simple toast system (no extra deps)
+  const [toasts, setToasts] = useState<
+    { id: number; type: "success" | "error"; message: string }[]
+  >([]);
+
+  const addToast = (message: string, type: "success" | "error" = "success") => {
+    const id = Date.now();
+    setToasts((t) => [...t, { id, type, message }]);
+    // auto-dismiss
+    setTimeout(() => removeToast(id), 4000);
+  };
+
+  const removeToast = (id: number) => {
+    setToasts((t) => t.filter((x) => x.id !== id));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+
+    emailjs
+      .send(
+        "service_11i7txs",
+        "template_6f7t76m",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "vivekanjankc12345@gmail.com", // 👈 add this
+        },
+        "bTTUkStKiWhMAIUHT"
+      )
+      .then(
+        (result: any) => {
+          console.log("Email sent:", result.text);
+          addToast("✅ Message sent successfully!", "success");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error: any) => {
+          console.error("Email error:", error.text);
+          addToast("❌ Failed to send message. Please try again.", "error");
+        }
+      );
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      value: 'vivekanjankc12345@gmail.com',
-      // Use Gmail compose to open webmail in a new tab for users without a mail client
-      link: 'https://mail.google.com/mail/?view=cm&fs=1&to=vivekanjankc12345@gmail.com'
+      title: "Email",
+      value: "vivekanjankc12345@gmail.com",
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=vivekanjankc12345@gmail.com",
     },
     {
       icon: Phone,
-      title: 'Phone',
-      value: '+91 7759952654',
-      link: 'tel:+917759952654'
+      title: "Phone",
+      value: "+91 7759952654",
+      link: "tel:+917759952654",
     },
     {
       icon: MapPin,
-      title: 'Location',
-      value: 'Ahemdabad, India',
-      link: '#'
-    }
+      title: "Location",
+      value: "Ahmedabad, India",
+      link: "#",
+    },
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/vivekanjankc12345', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/vivek-anjan/', label: 'LinkedIn' },
+    {
+      icon: Github,
+      href: "https://github.com/vivekanjankc12345",
+      label: "GitHub",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/vivek-anjan/",
+      label: "LinkedIn",
+    },
   ];
 
   return (
     <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Toast container */}
+        <div className="fixed top-6 right-6 z-50 space-y-3">
+          {toasts.map((t) => (
+            <div
+              key={t.id}
+              className={`max-w-sm w-full px-4 py-3 rounded-lg shadow-lg flex items-start space-x-3 transition transform origin-top-right ${
+                t.type === "success"
+                  ? "bg-green-600 text-white"
+                  : "bg-red-600 text-white"
+              }`}
+              role="status"
+              aria-live="polite"
+            >
+              <div className="flex-1">
+                <div className="text-sm">{t.message}</div>
+              </div>
+              <button
+                onClick={() => removeToast(t.id)}
+                className="ml-2 opacity-90 hover:opacity-100"
+                aria-label="Dismiss notification"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+        {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-pink-500 text-sm font-medium uppercase tracking-wider mb-4">
             GET IN TOUCH
@@ -60,7 +136,8 @@ const Contact = () => {
             Let's Work <span className="text-pink-500">Together</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can bring your ideas to life
+            Have a project in mind? Let's discuss how we can bring your ideas to
+            life
           </p>
         </div>
 
@@ -68,14 +145,22 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <a
                     key={index}
                     href={info.link}
-                    target={info.link?.startsWith('http') ? '_blank' : undefined}
-                    rel={info.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    target={
+                      info.link?.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      info.link?.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="flex items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300 group"
                   >
                     <div className="w-12 h-12 bg-pink-500/10 rounded-lg flex items-center justify-center group-hover:bg-pink-500/20 transition-colors duration-300">
@@ -91,23 +176,33 @@ const Contact = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">Follow Me</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Follow Me
+              </h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
-                    target={social.href?.startsWith('http') ? '_blank' : undefined}
-                    rel={social.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    target={
+                      social.href?.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      social.href?.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all duration-300 group"
                     title={social.label}
                   >
-                    <social.icon size={20} className="text-gray-400 group-hover:text-white" />
+                    <social.icon
+                      size={20}
+                      className="text-gray-400 group-hover:text-white"
+                    />
                   </a>
                 ))}
               </div>
             </div>
-
           </div>
 
           {/* Contact Form */}
@@ -144,7 +239,7 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-gray-300 text-sm font-medium mb-2">
                   Subject
@@ -159,7 +254,7 @@ const Contact = () => {
                   placeholder="Project inquiry"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-gray-300 text-sm font-medium mb-2">
                   Message
@@ -174,7 +269,7 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 className="w-full bg-pink-500 text-white py-3 rounded-lg font-medium hover:bg-pink-600 transition-colors duration-200 flex items-center justify-center"

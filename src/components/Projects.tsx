@@ -5,7 +5,7 @@ const Projects = () => {
   const [showAll, setShowAll] = useState(false);
 
   // Reference to scroll back to top of projects section
-  const projectsRef = useRef(null);
+  const projectsRef = useRef<HTMLDivElement | null>(null);
 
   const projects = [
     {
@@ -93,11 +93,8 @@ const Projects = () => {
 
   const handleToggle = () => {
     if (showAll) {
-      // When collapsing, scroll back to top of the projects section
-      // Deliberate type error: passing a string instead of ScrollIntoViewOptions
-      // This will cause TypeScript to complain and demonstrate error handling.
-      // @ts-expect-error intentional type error for demonstration
-      projectsRef.current?.scrollIntoView("smooth");
+      // When collapsing, scroll back to top of the projects section with smooth behavior
+      projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
     setShowAll(!showAll);
   };
