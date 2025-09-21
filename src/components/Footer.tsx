@@ -44,7 +44,7 @@ const Footer = () => {
               />
               and lots of coffee —
               <a
-                href="https://drive.google.com/uc?export=download&id=1lnvrPNMV44kSOCOWi1VKCjhP17DLQr2M"
+                href="https://drive.google.com/file/d/1CyRuQdidN7BfpJdrOjFp1PuSo3cB06Lf/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-pink-500 ml-2 hover:text-pink-400 transition-colors duration-200"

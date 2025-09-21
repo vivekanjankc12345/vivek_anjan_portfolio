@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                 <ArrowRight className="ml-2" size={20} />
               </a>
               <a
-                href="https://drive.google.com/file/d/1lnvrPNMV44kSOCOWi1VKCjhP17DLQr2M/view?usp=sharing"
+                href="https://drive.google.com/file/d/1CyRuQdidN7BfpJdrOjFp1PuSo3cB06Lf/view?usp=sharing"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
