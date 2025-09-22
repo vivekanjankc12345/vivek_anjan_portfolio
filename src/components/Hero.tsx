@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div>
-              <p className="text-pink-500 text-sm font-medium uppercase tracking-wider mb-4">
+              <p className="text-pink-500 text-base sm:text-lg md:text-xl font-medium uppercase tracking-wider mb-4">
                 WELCOME TO MY PORTFOLIO
               </p>
               <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
@@ -68,12 +68,29 @@ const Hero: React.FC = () => {
                 <ArrowRight className="ml-2" size={20} />
               </a>
               <a
-                href="https://drive.google.com/file/d/1CyRuQdidN7BfpJdrOjFp1PuSo3cB06Lf/view?usp=sharing"
-                download
+                href="https://drive.google.com/file/d/104vWwtqCV6WIhy26utRjxr_VuNcccKta/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center px-8 py-3 border border-pink-500 text-pink-500 font-medium rounded-lg hover:bg-pink-500 hover:text-white transition-all duration-200"
-                title="Download Resume"
+                title="Preview & Download Resume"
+                onClick={(e) => {
+                  e.preventDefault(); // prevent default, we'll handle manually
+
+                  // Open preview in a new tab
+                  window.open(
+                    "https://drive.google.com/file/d/104vWwtqCV6WIhy26utRjxr_VuNcccKta/view?usp=sharing",
+                    "_blank"
+                  );
+
+                  // Trigger auto-download using direct download link
+                  const link = document.createElement("a");
+                  link.href =
+                    "https://drive.google.com/uc?export=download&id=104vWwtqCV6WIhy26utRjxr_VuNcccKta";
+                  link.setAttribute("download", "Vivek-Anjan-Resume.pdf");
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
               >
                 <Download className="mr-2" size={20} />
                 Resume

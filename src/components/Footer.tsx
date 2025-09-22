@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="mb-6">
             <div className="flex items-center justify-center mb-4">
               <div className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center mr-3">
-                <span className="text-white font-bold">D</span>
+                <span className="text-white font-bold">P</span>
               </div>
               <span className="text-white font-semibold text-lg">
                 VIVEK ANJAN
