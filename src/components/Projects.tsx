@@ -31,61 +31,27 @@ const Projects = () => {
       githubLink: "https://github.com/anwarjitme/green-room-4314",
     },
     {
-      title: "Salus Stila",
-      category: "FULL STACK",
-      description:
-        "A construction services platform built with the MERN stack, featuring project planning, task assignment, material sourcing, and team collaboration.",
-      image:
-        "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: [
-        "React",
-        "Redux Toolkit",
-        "Chakra UI",
-        "Node.js",
-        "Express",
-        "MongoDB",
-      ],
-      liveLink: "https://www.salussafety.io/",
-      githubLink: "",
-    },
-    {
-      title: "Employee Management System",
-      category: "FULL STACK",
-      description:
-        "A MERN stack system with employee record management, role-based access, attendance tracking, performance evaluation, and reporting.",
-      image:
-        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: [
-        "React",
-        "Redux Toolkit",
-        "Chakra UI",
-        "Node.js",
-        "Express",
-        "MongoDB",
-      ],
-      liveLink: "",
-      githubLink: "",
-    },
-    {
-      title: "BlueBox",
+      title: "Monkey Survey",
       category: "WEB APP",
       description:
-        "A parcel delivery app with OTP-based verification, Stripe integration for payments, and real-time parcel tracking. Built with React (Tailwind CSS + Redux Toolkit) and Node.js.",
+        "A free online survey tool to capture voices and opinions, built using modern web technologies. Drive your business forward by gathering insights from people who matter most to you.",
       image:
-        "https://images.pexels.com/photos/6169041/pexels-photo-6169041.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: [
-        "React",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Stripe",
-        "Twilio",
-      ],
-      liveLink: "",
-      githubLink: "",
+        "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg?auto=compress&cs=tinysrgb&w=600",
+      technologies: ["React", "Chakra UI", "JavaScript", "CSS"],
+      liveLink: "https://heartfelt-creponne-02f101.netlify.app/",
+      githubLink: "https://github.com/vivekanjankc12345/rural-error-930/tree/main",
     },
+    {
+      title: "Abof",
+      category: "WEB APP",
+      description:
+        "An e-commerce platform clone. Unfortunately, no new orders can be placed, but the closure does not affect ongoing orders and returns. Users can track recent orders through the My Orders section.",
+      image:
+        "https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=600",
+      technologies: ["React", "Chakra UI"],
+      liveLink: "https://adof-aj31032003.vercel.app/",
+      githubLink: "https://github.com/ajayahara/homely-yarn-5441",
+    }
   ];
 
   // Display only first 2 projects unless showAll is true
