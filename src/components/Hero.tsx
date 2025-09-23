@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                 <ArrowRight className="ml-2" size={20} />
               </a>
               <a
-                href="https://drive.google.com/file/d/104vWwtqCV6WIhy26utRjxr_VuNcccKta/view?usp=sharing"
+                href="https://drive.google.com/file/d/1yoytx_sSl1Q5Pkx6bVRJesVukGru6QOV/view"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center px-8 py-3 border border-pink-500 text-pink-500 font-medium rounded-lg hover:bg-pink-500 hover:text-white transition-all duration-200"
@@ -78,14 +78,14 @@ const Hero: React.FC = () => {
 
                   // Open preview in a new tab
                   window.open(
-                    "https://drive.google.com/file/d/104vWwtqCV6WIhy26utRjxr_VuNcccKta/view?usp=sharing",
+                    "https://drive.google.com/file/d/1yoytx_sSl1Q5Pkx6bVRJesVukGru6QOV/view",
                     "_blank"
                   );
 
                   // Trigger auto-download using direct download link
                   const link = document.createElement("a");
                   link.href =
-                    "https://drive.google.com/uc?export=download&id=104vWwtqCV6WIhy26utRjxr_VuNcccKta";
+                    "https://drive.google.com/uc?export=download&id=1yoytx_sSl1Q5Pkx6bVRJesVukGru6QOV";
                   link.setAttribute("download", "Vivek-Anjan-Resume.pdf");
                   document.body.appendChild(link);
                   link.click();

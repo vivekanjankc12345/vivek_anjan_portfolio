@@ -9,10 +9,10 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "JioMart Clone",
+      title: "E-commerce Website",
       category: "FULL STACK",
       description:
-        "An e-commerce platform clone featuring authentication, homepage, product pages, cart, checkout, and payment functionality. Built collaboratively by a team of 5 developers in 5 days.",
+        "An e-commerce platform inspired by JioMart, featuring authentication, homepage, product pages, cart, checkout, and payment functionality. Built collaboratively by a team of 5 developers in 5 days.",
       image:
         "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600",
       technologies: ["React", "Redux", "Chakra UI"],
@@ -20,38 +20,16 @@ const Projects = () => {
       githubLink: "https://github.com/gucci1909/Jio-Mart-Website-Clone",
     },
     {
-      title: "HubSpot Clone",
+      title: "CRM Application",
       category: "WEB APP",
       description:
-        "A CRM platform clone with features like authentication, data filtering, search, and full CRUD operations. Built collaboratively by a team of 5 developers in 5 days.",
+        "A customer relationship management (CRM) platform inspired by HubSpot, with features like authentication, data filtering, search, and full CRUD operations. Built collaboratively by a team of 5 developers in 5 days.",
       image:
         "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg?auto=compress&cs=tinysrgb&w=600",
       technologies: ["HTML", "CSS", "JavaScript"],
       liveLink: "https://bespoke-gumdrop-e4c156.netlify.app/",
       githubLink: "https://github.com/anwarjitme/green-room-4314",
     },
-    {
-      title: "Monkey Survey",
-      category: "WEB APP",
-      description:
-        "A free online survey tool to capture voices and opinions, built using modern web technologies. Drive your business forward by gathering insights from people who matter most to you.",
-      image:
-        "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: ["React", "Chakra UI", "JavaScript", "CSS"],
-      liveLink: "https://heartfelt-creponne-02f101.netlify.app/",
-      githubLink: "https://github.com/vivekanjankc12345/rural-error-930/tree/main",
-    },
-    {
-      title: "Abof",
-      category: "WEB APP",
-      description:
-        "An e-commerce platform clone. Unfortunately, no new orders can be placed, but the closure does not affect ongoing orders and returns. Users can track recent orders through the My Orders section.",
-      image:
-        "https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: ["React", "Chakra UI"],
-      liveLink: "https://adof-aj31032003.vercel.app/",
-      githubLink: "https://github.com/ajayahara/homely-yarn-5441",
-    }
   ];
 
   // Display only first 2 projects unless showAll is true
@@ -60,7 +38,7 @@ const Projects = () => {
   const handleToggle = () => {
     if (showAll) {
       // When collapsing, scroll back to top of the projects section with smooth behavior
-      projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
+      projectsRef.current?.scrollIntoView({ behavior: "smooth" });
     }
     setShowAll(!showAll);
   };
@@ -68,7 +46,6 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-gray-900" ref={projectsRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-pink-500 text-sm font-medium uppercase tracking-wider mb-4">
@@ -78,7 +55,8 @@ const Projects = () => {
             Featured <span className="text-pink-500">Projects</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and experience.
+            Here are some of my recent projects that showcase my skills and
+            experience.
           </p>
         </div>
 
