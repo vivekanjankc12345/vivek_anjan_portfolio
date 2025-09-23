@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
                 }}
               >
                 <Download className="mr-2" size={20} />
-                Resume
+                Resume 
               </a>
             </div>
           </div>
